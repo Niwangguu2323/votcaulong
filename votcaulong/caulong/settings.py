@@ -68,11 +68,12 @@ AUTOTHROTTLE_ENABLED = True
 AUTOTHROTTLE_START_DELAY = 0
 
 ITEM_PIPELINES = {
-   "caulong.pipelines.MongoDBCauLongPipeline": 100,
-   "caulong.pipelines.CSVDBCauLongPipeline": 200,
-   "caulong.pipelines.JsonDBCauLongPipeline": 400
-   
+    "caulong.pipelines.MongoDBCauLongPipeline": 100,
+    "caulong.pipelines.CSVDBCauLongPipeline": 200,
+    "caulong.pipelines.JsonDBCauLongPipeline": 400,
+    "caulong.pipelines.PostgresPipeline": 500  # Thêm Postgres pipeline mới
 }
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
