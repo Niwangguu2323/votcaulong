@@ -71,7 +71,6 @@ ITEM_PIPELINES = {
     "caulong.pipelines.MongoDBCauLongPipeline": 100,
     "caulong.pipelines.CSVDBCauLongPipeline": 200,
     "caulong.pipelines.JsonDBCauLongPipeline": 400,
-    "caulong.pipelines.PostgresPipeline": 500  # Thêm Postgres pipeline mới
 }
 
 
