@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  scrapy:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - mongodb
+      - pyspark
+    networks:
+      - votcaulong_network
+
+  mongodb:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - votcaulong_network
+
+  pyspark:
+    image: bitnami/spark:3.1.2
+    environment:
+      - SPARK_MODE=master
+    volumes:
+      - ./spark_app:/app
+    networks:
+      - votcaulong_network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: caulongdb  # Tên cơ sở dữ liệu
+      POSTGRES_USER: postgres  # Tài khoản
+      POSTGRES_PASSWORD: bin01042003  # Mật khẩu
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - votcaulong_network
+
+volumes:
+  mongo_data:
+  pg_data:  # Đảm bảo rằng tên volume này nhất quán
+
+networks:
+  votcaulong_network:
