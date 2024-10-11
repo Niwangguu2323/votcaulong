@@ -20,7 +20,7 @@ COPY . .
 
 # Cài đặt Java cho PySpark
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jre-headless && \
+    apt-get install -y openjdk-17-jre-headless && \
     pip install pyspark
 
 # Thiết lập biến môi trường JAVA_HOME cho PySpark
